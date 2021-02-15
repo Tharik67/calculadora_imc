@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,7 +55,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text('Calculador de Imc'),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue[900],
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.autorenew),
@@ -63,67 +65,71 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-            child: Form(
-              key: _formkey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Icon(Icons.person_pin, size: 120, color: Colors.green),
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'Peso em kg:',
-                        labelStyle:
-                            TextStyle(fontSize: 25, color: Colors.green)),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.green, fontSize: 25.0),
-                    controller: weightcontroler,
-                    validator: (String value) {
-                      return value.isEmpty ? 'Isira sua altura' : null;
-                    },
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'Altura em cm:',
-                        labelStyle:
-                            TextStyle(fontSize: 25, color: Colors.green)),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.green, fontSize: 25.0),
-                    controller: heightcontroler,
-                    validator: (String value) {
-                      return value.isEmpty ? 'Isira sua altura' : null;
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    child: Container(
-                        height: 50.0,
-                        child: RaisedButton(
-                            onPressed: () {
-                              if (_formkey.currentState.validate()) {
-                                calcula();
-                              }
-                            },
-                            child: Text(
-                              'Calcular',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 25.0),
-                            ),
-                            color: Colors.green)),
-                  ),
-                  Container(
-                    height: 50.0,
-                    child: Text(_inftext,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.green, fontSize: 25.0)),
-                    padding: EdgeInsets.only(top: 10),
-                  ),
-                ],
-              ),
-            )));
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.white, Colors.blue[200]])),
+          child: Form(
+            key: _formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Icon(Icons.person_pin, size: 120, color: Colors.blue[900]),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      labelText: 'Peso em kg:',
+                      labelStyle:
+                          TextStyle(fontSize: 25, color: Colors.black87)),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black87, fontSize: 25.0),
+                  controller: weightcontroler,
+                  validator: (String value) {
+                    return value.isEmpty ? 'Isira sua altura' : null;
+                  },
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      labelText: 'Altura em cm:',
+                      labelStyle:
+                          TextStyle(fontSize: 25, color: Colors.black87)),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black87, fontSize: 25.0),
+                  controller: heightcontroler,
+                  validator: (String value) {
+                    return value.isEmpty ? 'Isira sua altura' : null;
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Container(
+                      height: 50.0,
+                      child: RaisedButton(
+                          onPressed: () {
+                            if (_formkey.currentState.validate()) {
+                              calcula();
+                            }
+                          },
+                          child: Text(
+                            'Calcular',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 25.0),
+                          ),
+                          color: Colors.blue[900])),
+                ),
+                Container(
+                  height: 50.0,
+                  child: Text(_inftext,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.black87, fontSize: 25.0)),
+                  padding: EdgeInsets.only(top: 10),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
