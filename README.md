@@ -1,6 +1,6 @@
 # calculadora_imc
 
-A new Flutter application.
+Applicação Flutter de aprendizado  
 
 ## Getting Started
 
